@@ -3,7 +3,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // Simple health check
-    const healthCheck = {
+    const healthCheck: any = {
       status: 'healthy',
       timestamp: new Date().toISOString(),
       environment: {
