@@ -1,0 +1,23 @@
+{
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/check",
+      "schedule": "0 9 * * *"
+    }
+  ],
+  "env": {
+    "MONITORING_TOKEN": "@monitoring-token",
+    "SUPABASE_URL": "@supabase-url",
+    "SUPABASE_SERVICE_KEY": "@supabase-service-key",
+    "SLACK_WEBHOOK_URL": "@slack-webhook-url",
+    "DISCORD_WEBHOOK_URL": "@discord-webhook-url",
+    "EMAIL_FROM": "@email-from",
+    "EMAIL_TO": "@email-to",
+    "SENDGRID_API_KEY": "@sendgrid-api-key"
+  }
+}

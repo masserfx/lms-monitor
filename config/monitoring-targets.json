@@ -1,0 +1,75 @@
+{
+  "targets": [
+    {
+      "name": "LMS Production - Health Check",
+      "group": "production",
+      "url": "http://89.221.215.29/api/health",
+      "interval": 300,
+      "conditions": {
+        "status": 200,
+        "responseTime": 1000,
+        "body": {
+          "status": "healthy"
+        }
+      },
+      "alerts": {
+        "enabled": true,
+        "channels": ["email", "slack"],
+        "failureThreshold": 2,
+        "successThreshold": 2
+      }
+    },
+    {
+      "name": "LMS Production - Database",
+      "group": "production",
+      "url": "http://89.221.215.29/api/health/db",
+      "interval": 300,
+      "conditions": {
+        "status": 200,
+        "responseTime": 500,
+        "body": {
+          "database": "connected"
+        }
+      },
+      "alerts": {
+        "enabled": true,
+        "channels": ["email", "slack"],
+        "failureThreshold": 3
+      }
+    },
+    {
+      "name": "LMS Production - Homepage",
+      "group": "production",
+      "url": "http://89.221.215.29/cs",
+      "interval": 600,
+      "conditions": {
+        "status": 200,
+        "responseTime": 3000,
+        "bodyContains": "ACH Academy"
+      },
+      "alerts": {
+        "enabled": true,
+        "channels": ["email"],
+        "failureThreshold": 2
+      }
+    },
+    {
+      "name": "Supabase API",
+      "group": "external",
+      "url": "https://zrccfuuprrtyfvitsjhm.supabase.co/rest/v1/",
+      "headers": {
+        "apikey": "${SUPABASE_ANON_KEY}"
+      },
+      "interval": 600,
+      "conditions": {
+        "status": 200,
+        "responseTime": 1000
+      },
+      "alerts": {
+        "enabled": true,
+        "channels": ["discord"],
+        "failureThreshold": 3
+      }
+    }
+  ]
+}

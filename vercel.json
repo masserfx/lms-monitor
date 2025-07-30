@@ -1,0 +1,21 @@
+{
+  "framework": null,
+  "buildCommand": "echo 'No build required'",
+  "outputDirectory": ".",
+  "crons": [{
+    "path": "/api/check",
+    "schedule": "0 8 * * *"
+  }],
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 10,
+      "runtime": "@vercel/node@3.0.0"
+    }
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/status"
+    }
+  ]
+}
